@@ -31,6 +31,18 @@ func PrintIdentityToken() (string, error) {
 	return out, nil
 }
 
+// ADCPrintAccessToken() returns the output of 'gcloud auth application-default print-access-token'
+// If there was an error, it returns an empty string (and the encountered error).
+//
+// Requires having 'gcloud' available in the $PATH
+func ADCPrintAccessToken() (string, error) {
+	out, err := gcloud("auth", "application-default", "print-access-token")
+	if err != nil {
+		return "", err
+	}
+	return out, nil
+}
+
 // Project() returns the output of 'gcloud config get project'
 // If there was an error, it returns an empty string (and the encountered error).
 //
